@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AL Conseil">
+  <rect width="64" height="64" rx="10" fill="#0F2C4C"/>
+  <text x="11" y="46" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-weight="600" font-size="38" fill="#FFFFFF" letter-spacing="2">A</text>
+  <rect x="28" y="28" width="10" height="2.5" fill="#B8893B"/>
+  <text x="39" y="46" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-weight="600" font-size="38" fill="#FFFFFF" letter-spacing="2">L</text>
+</svg>

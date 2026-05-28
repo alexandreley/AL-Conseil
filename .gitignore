@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude Code local config
+.claude/
+
+# Sources & briefs (hors-repo public)
+BRIEF-CLAUDE-CODE.md
+CONTENT.md
+design-system.html
+
+# OG image source SVG (on garde le JPG)
+assets/og-image.svg
+
+# Logs & temp
+*.log
+.tmp/
