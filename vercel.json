@@ -4,7 +4,12 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/index", "destination": "/", "permanent": true },
-    { "source": "/index.html", "destination": "/", "permanent": true }
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/cabinet.html", "destination": "/cabinet", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/mentions-legales.html", "destination": "/mentions-legales", "permanent": true },
+    { "source": "/design-system.html", "destination": "/", "permanent": false },
+    { "source": "/design-system", "destination": "/", "permanent": false }
   ],
   "headers": [
     {

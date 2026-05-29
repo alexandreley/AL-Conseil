@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /mentions-legales
 Disallow: /mentions-legales.html
+Disallow: /design-system
+Disallow: /design-system.html
 
 Sitemap: https://al-conseil.fr/sitemap.xml
