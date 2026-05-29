@@ -191,8 +191,9 @@
       feedback.className = 'form-feedback form-feedback--' + type;
       feedback.textContent = message;
       feedback.removeAttribute('aria-hidden');
+      // Sortir le feedback du form (sinon il est masqué quand form.style.display='none' sur succès).
       const wrapper = form.parentElement;
-      if (wrapper && !wrapper.contains(feedback)) wrapper.appendChild(feedback);
+      if (wrapper && feedback.parentElement !== wrapper) wrapper.appendChild(feedback);
       feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
   }

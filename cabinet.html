@@ -32,10 +32,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts (self-hosted) -->
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
@@ -55,6 +54,18 @@
     "alumniOf": ["PageGroup", "Mac Anders", "Meteojob (CleverConnect)"],
     "knowsAbout": ["Recrutement de cadres", "Supply chain", "Industrie", "Marque employeur"],
     "sameAs": "https://www.linkedin.com/in/alexandre-ley-574bb2a1"
+  }
+  </script>
+
+  <!-- JSON-LD : BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://al-conseil.fr/" },
+      { "@type": "ListItem", "position": 2, "name": "Le cabinet", "item": "https://al-conseil.fr/cabinet" }
+    ]
   }
   </script>
 </head>
@@ -108,12 +119,12 @@
           <aside class="founder-card" aria-label="Profil en bref">
             <figure class="founder-photo">
               <img
-                src="assets/images/alexandre-ley-800.jpg"
-                srcset="assets/images/alexandre-ley-400.jpg 400w, assets/images/alexandre-ley-800.jpg 800w"
+                src="/assets/images/alexandre-ley-800.jpg"
+                srcset="/assets/images/alexandre-ley-400.jpg 400w, /assets/images/alexandre-ley-800.jpg 800w"
                 sizes="(max-width: 768px) 80vw, 360px"
-                width="800" height="1202"
+                width="532" height="800"
                 alt="Alexandre Ley, fondateur d'AL Conseil, devant le logo du cabinet."
-                loading="lazy" decoding="async">
+                loading="lazy" decoding="async" fetchpriority="low">
             </figure>
             <div class="founder-card__body">
               <p class="eyebrow founder-card__label">En bref</p>

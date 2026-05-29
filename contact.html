@@ -32,10 +32,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts (self-hosted) -->
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
@@ -59,6 +58,18 @@
         "addressCountry": "FR"
       }
     }
+  }
+  </script>
+
+  <!-- JSON-LD : BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://al-conseil.fr/" },
+      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://al-conseil.fr/contact" }
+    ]
   }
   </script>
 </head>
@@ -136,16 +147,19 @@
           <div class="contact-form-wrapper">
             <h2 id="form-title" class="h2">Présentez votre projet.</h2>
 
-            <!-- Le formulaire ouvre le client mail de l'utilisateur avec une demande pré-remplie (sujet + corps formatés, cf. main.js). Pour basculer sur un service d'envoi (Formspree, etc.), remplacer l'attribut action par l'endpoint correspondant — le JS détecte automatiquement le type. -->
+            <!-- Soumission via Formspree (endpoint xqejnroo). Le JS dans main.js poste les données en AJAX (Accept: application/json) et gère succès/erreur. Pour changer d'endpoint ou repasser en mailto, modifier simplement l'attribut action ci-dessous — le JS détecte automatiquement le type. -->
             <form
               class="form-grid"
               id="contact-form"
-              action="mailto:alexandre.ley@al-conseil.fr"
+              action="https://formspree.io/f/xqejnroo"
               method="POST"
               novalidate
               aria-label="Formulaire de contact"
             >
-              <!-- Honeypot anti-spam -->
+              <!-- Sujet de l'email reçu par Alexandre (convention Formspree) -->
+              <input type="hidden" name="_subject" value="Nouvelle demande de contact — al-conseil.fr">
+
+              <!-- Honeypot anti-spam (reconnu par Formspree) -->
               <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
 
               <div class="field">

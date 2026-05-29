@@ -1,0 +1,17 @@
+# Source files non déployés
+assets/images/alexandre-ley-al-conseil.png
+
+# Briefs & docs internes
+BRIEF-CLAUDE-CODE.md
+BRIEF-VISAGES-HOME.md
+CONTENT.md
+CREDITS.md
+
+# Design system (interne, non-public)
+design-system.html
+
+# Outillage de dev local (non déployé)
+.devserver.py
+
+# OS
+.DS_Store

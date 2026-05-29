@@ -32,10 +32,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts (self-hosted) -->
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
@@ -106,19 +105,34 @@
   <main id="main">
 
     <!-- 1. Hero -->
-    <section class="site-hero" aria-labelledby="hero-title">
-      <div class="container">
-        <p class="eyebrow">Cabinet de recrutement · Lille</p>
-        <h1 id="hero-title" class="display-xl">
-          Trouver le bon talent,<br>
-          <em>créer la bonne rencontre.</em>
-        </h1>
-        <hr class="gold-rule mt-4 mb-5">
-        <p>Recrutement de cadres et dirigeants pour les entreprises du tertiaire, de la supply chain et de l'industrie — en CDI comme en CDD.</p>
-        <div class="cta-row">
-          <a href="/contact" class="btn btn--primary btn--lg">Confier un recrutement</a>
-          <a href="#methode" class="btn btn--ghost">Découvrir la méthode</a>
+    <section class="site-hero site-hero--split" aria-labelledby="hero-title">
+      <div class="container hero-split">
+        <div class="hero-split__text">
+          <p class="eyebrow">Cabinet de recrutement · Lille</p>
+          <h1 id="hero-title" class="display-xl">
+            Trouver le bon talent,<br>
+            <em>créer la bonne rencontre.</em>
+          </h1>
+          <hr class="gold-rule mt-4 mb-5">
+          <p>Recrutement de cadres et dirigeants pour les entreprises du tertiaire, de la supply chain et de l'industrie — en CDI comme en CDD.</p>
+          <div class="cta-row">
+            <a href="/contact" class="btn btn--primary btn--lg">Confier un recrutement</a>
+            <a href="#methode" class="btn btn--ghost">Découvrir la méthode</a>
+          </div>
         </div>
+        <figure class="hero-portrait">
+          <img
+            src="assets/images/alexandre-ley-800.jpg"
+            srcset="assets/images/alexandre-ley-400.jpg 400w, assets/images/alexandre-ley-800.jpg 800w"
+            sizes="(max-width: 980px) 320px, 440px"
+            width="532" height="800"
+            alt="Alexandre Ley, consultant en recrutement et fondateur d'AL Conseil"
+            loading="eager" fetchpriority="high" decoding="async">
+          <figcaption class="hero-portrait__cap">
+            <span class="hero-portrait__name">Alexandre Ley</span>
+            <span class="hero-portrait__role">Fondateur &amp; consultant</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
