@@ -44,16 +44,26 @@ AL Conseil/
 ├── styles.css                  ← Tokens + classes du DS, organisés par section
 ├── main.js                     ← Menu mobile, validation form, scroll smooth
 ├── assets/
-│   ├── favicon.svg
-│   ├── favicon-32.png
-│   ├── apple-touch-icon.png
-│   ├── og-image.jpg            ← 1200×630 pour partages sociaux
-│   └── logo.svg                ← Optionnel — pour l'instant logo texte suffit
+│   ├── favicon.svg                                          ← À créer
+│   ├── favicon-32.png                                       ← À créer
+│   ├── apple-touch-icon.png                                 ← À créer
+│   ├── logo.svg                                             ← Optionnel — le rendu texte du DS suffit
+│   └── images/                                              ← 9 visuels déjà téléchargés via Pexels
+│       ├── hero-poignee-de-main-confiance.jpg                (1920×1282)
+│       ├── methode-reunion-strategique.jpg                   (1920×1280)
+│       ├── expertise-tertiaire-bureau-moderne.jpg            (1920×1292)
+│       ├── expertise-supply-chain-logistique.jpg             (1920×1280)
+│       ├── expertise-industrie-usine.jpg                     (1920×1280)
+│       ├── cabinet-bureau-elegant-consultant.jpg             (1920×1280)
+│       ├── contact-echange-professionnel-cafe.jpg            (1920×1281)
+│       ├── og-image-1200x630.jpg                             (prêt à l'emploi pour og:image)
+│       └── og-image-poignee-de-main-elegant.jpg              (source HD)
 ├── robots.txt
 ├── sitemap.xml
 │
 ├── design-system.html          ← Référence visuelle, NE PAS modifier
 ├── CONTENT.md                  ← Contenu rédactionnel, NE PAS modifier
+├── CREDITS.md                  ← Crédits photo Pexels, NE PAS modifier
 └── BRIEF-CLAUDE-CODE.md        ← Ce fichier
 ```
 
@@ -165,7 +175,9 @@ html, body { ... }
   <meta property="og:site_name" content="AL Conseil">
   <meta property="og:title" content="{TITLE_PAR_PAGE}">
   <meta property="og:description" content="{DESC_PAR_PAGE}">
-  <meta property="og:image" content="https://al-conseil.fr/assets/og-image.jpg">
+  <meta property="og:image" content="https://al-conseil.fr/assets/images/og-image-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://al-conseil.fr/{PAGE}">
 
   <!-- Canonical -->
@@ -238,6 +250,87 @@ html, body { ... }
 | `mentions-legales.html` | `<header>` · `<main>` avec `<article>` contenant le contenu · `<footer>` |
 
 **Règle accessibilité** : un seul `<h1>` par page, hiérarchie h1 → h2 → h3 sans saut.
+
+---
+
+## 4.4. Placement des images dans les pages
+
+Les 9 visuels sont déjà téléchargés dans `assets/images/`. Détail complet des crédits dans `CREDITS.md` (à respecter : licence Pexels, mention recommandée dans les mentions légales).
+
+**Placement page par page** :
+
+### `index.html`
+
+| Section | Fichier image | Traitement suggéré |
+|---|---|---|
+| Hero | `hero-poignee-de-main-confiance.jpg` | Image full-width en background avec overlay navy 800 à 60-70 % d'opacité OU image à droite du hero en colonne (split layout). À tester. |
+| Méthode (4 temps) | `methode-reunion-strategique.jpg` | Image discrète en haut de section, format paysage ~1180×420, recadrage centré. |
+| Carte *Tertiaire* | `expertise-tertiaire-bureau-moderne.jpg` | Image en haut de la carte navy, ~280×180, `object-fit:cover`. |
+| Carte *Supply Chain* | `expertise-supply-chain-logistique.jpg` | Idem. |
+| Carte *Industrie* | `expertise-industrie-usine.jpg` | Idem. |
+
+### `cabinet.html`
+
+| Section | Fichier image | Traitement suggéré |
+|---|---|---|
+| Hero | `cabinet-bureau-elegant-consultant.jpg` | Image à droite du hero (split layout 50/50 desktop, full-width mobile en dessous du titre). |
+| Citation conviction | *(pas d'image — laisser respirer)* | — |
+
+### `contact.html`
+
+| Section | Fichier image | Traitement suggéré |
+|---|---|---|
+| Hero | `contact-echange-professionnel-cafe.jpg` | Image à droite du hero. Renforce l'idée d'un « premier échange ». |
+| Form | *(pas d'image)* | — |
+
+### `mentions-legales.html`
+
+Pas d'image (page volontairement sobre).
+
+### Open Graph (toutes pages)
+
+```html
+<meta property="og:image" content="https://al-conseil.fr/assets/images/og-image-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://al-conseil.fr/assets/images/og-image-1200x630.jpg">
+```
+
+### Règles techniques pour toutes les `<img>`
+
+- **Toujours** un `alt` descriptif en français (pas l'alt anglais brut de Pexels).
+- **Toujours** `width` et `height` explicites (correspondant au ratio livré, pas forcément la taille de rendu).
+- **Loading lazy** sur toutes les images hors hero : `loading="lazy" decoding="async"`.
+- **Picture / srcset** : facultatif en V1. Si performance Lighthouse < 95, ajouter des versions resized (960px, 1440px, 1920px) avec `<picture>` ou `srcset`.
+- **Optimisation** : les fichiers sont déjà compressés par le CDN Pexels. Recompression optionnelle avec `cwebp` ou `mozjpeg` si besoin.
+
+### Exemple d'intégration hero accueil
+
+```html
+<section class="site-hero site-hero--with-image">
+  <div class="container site-hero__inner">
+    <div class="site-hero__content">
+      <span class="eyebrow">Cabinet de recrutement · Lille</span>
+      <h1>Trouver le bon talent,<br><em>créer la bonne rencontre.</em></h1>
+      <div class="gold-rule"></div>
+      <p class="body-lg">Recrutement de cadres et dirigeants pour les entreprises du tertiaire, de la supply chain et de l'industrie — en CDI comme en CDD.</p>
+      <div class="cta-row">
+        <a href="contact.html" class="btn btn--primary btn--lg">Confier un recrutement</a>
+        <a href="#methode" class="btn btn--ghost">Découvrir la méthode</a>
+      </div>
+    </div>
+    <div class="site-hero__media">
+      <img src="assets/images/hero-poignee-de-main-confiance.jpg"
+           alt="Poignée de main entre deux dirigeants en costume, scellant un accord de recrutement."
+           width="1920" height="1282"
+           fetchpriority="high">
+    </div>
+  </div>
+</section>
+```
+
+> **Important** — Toujours mentionner les crédits dans la page mentions légales (bloc HTML prêt à coller dispo dans `CREDITS.md`).
 
 ---
 

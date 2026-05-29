@@ -136,11 +136,11 @@
           <div class="contact-form-wrapper">
             <h2 id="form-title" class="h2">Présentez votre projet.</h2>
 
-            <!-- TODO: brancher l'endpoint Formspree. Remplacer action="#" par "https://formspree.io/f/{ID}" — créer le formulaire sur formspree.io et récupérer l'ID après /f/ dans l'URL fournie. Tant que ce n'est pas fait, la soumission affiche une erreur invitant à écrire directement à alexandre.ley@al-conseil.fr (cf. main.js). -->
+            <!-- Le formulaire ouvre le client mail de l'utilisateur avec une demande pré-remplie (sujet + corps formatés, cf. main.js). Pour basculer sur un service d'envoi (Formspree, etc.), remplacer l'attribut action par l'endpoint correspondant — le JS détecte automatiquement le type. -->
             <form
               class="form-grid"
               id="contact-form"
-              action="#"
+              action="mailto:alexandre.ley@al-conseil.fr"
               method="POST"
               novalidate
               aria-label="Formulaire de contact"
